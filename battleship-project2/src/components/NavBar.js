@@ -1,3 +1,5 @@
+// src/components/NavBar.js
+
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../css/NavBar.css";
@@ -7,16 +9,15 @@ export default function NavBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  function toggleDropdown() {
-    setDropdownOpen((prev) => !prev);
-  }
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
 
+  // Close dropdown when clicking outside
   useEffect(() => {
-    function handleClickOutside(event) {
+    const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
-    }
+    };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);

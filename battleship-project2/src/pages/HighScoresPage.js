@@ -1,3 +1,5 @@
+// src/pages/HighScoresPage.js
+
 import React from "react";
 import "../css/HighScoresPage.css";
 

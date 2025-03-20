@@ -1,3 +1,5 @@
+// src/pages/RulesPage.js
+
 import React from "react";
 import "../css/RulesPage.css";
 

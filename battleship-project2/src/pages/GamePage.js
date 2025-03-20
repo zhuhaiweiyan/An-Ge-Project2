@@ -1,4 +1,5 @@
 // src/pages/GamePage.js
+
 import React from "react";
 import { useGameContext } from "../contexts/GameContext";
 import Board from "../components/Board";
@@ -6,28 +7,48 @@ import ShipSetup from "../utils/ShipSetup";
 import "../css/GamePage.css";
 
 export default function GamePage({ mode }) {
-  const { turn, gameOver, winner, time, resetGame, setupComplete } = useGameContext();
+  const { turn, gameOver, winner, time, resetGame, setupComplete } =
+    useGameContext();
+
+  function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
+      2,
+      "0"
+    )}:${String(secs).padStart(2, "0")}`;
+  }
+
   return (
     <div className="game-page-container">
+      <div className="top-bar">
+        <h2 className="page-title">Current Mode: {mode}</h2>
+        <div className="info-section">
+          <span className="timer">Time: {formatTime(time)}</span>
+          {(setupComplete || mode === "easy") && (
+            <button className="reset-btn" onClick={resetGame}>
+              Restart
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Only show current turn during active gameplay */}
+      {setupComplete && !gameOver && (
+        <p className="turn-indicator">Current Turn: {turn}</p>
+      )}
+
+      {/* Display game over banner when game ends */}
       {gameOver && (
         <div className="game-over-banner">
           <span>Game Over! {winner} won!</span>
         </div>
       )}
 
-      <div className="top-bar">
-        <h2 className="page-title">Game Page - Mode: {mode}</h2>
-        <div className="info-section">
-          <span className="timer">Time: {time} seconds</span>
-          <button className="reset-btn" onClick={resetGame}>
-            Reset
-          </button>
-        </div>
-      </div>
-
-      {/* If manual ship placement is not yet complete and mode is "normal", show the ShipSetup screen */}
+      {/* Show ship setup if not completed; otherwise render boards */}
       {!setupComplete && mode === "normal" ? (
-        <div>
+        <div className="ship-setup-info">
           <h3>Place your ships</h3>
           <ShipSetup />
         </div>
@@ -46,8 +67,6 @@ export default function GamePage({ mode }) {
           </div>
         </div>
       )}
-
-      <p className="turn-indicator">Current Turn: {turn}</p>
     </div>
   );
 }

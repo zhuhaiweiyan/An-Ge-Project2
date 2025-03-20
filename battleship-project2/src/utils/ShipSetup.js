@@ -1,11 +1,15 @@
 // src/components/ShipSetup.js
+
 import React, { useState } from "react";
 import { useGameContext } from "../contexts/GameContext";
 
+/**
+ * ShipSetup allows user to place four ships (Carrier, Battleship, Cruiser, Destroyer) manually
+ * or automatically. Ships are placed horizontally or vertically, without overlap.
+ */
 export default function ShipSetup() {
   const { setPlayerBoard, completeSetup } = useGameContext();
 
-  // Initial ships list: only four ships (removed Submarine)
   const initialShips = [
     { id: "Carrier", name: "Carrier", length: 5 },
     { id: "Battleship", name: "Battleship", length: 4 },
@@ -13,21 +17,13 @@ export default function ShipSetup() {
     { id: "Destroyer", name: "Destroyer", length: 2 },
   ];
 
-  // Ships that have not been placed
   const [shipsToPlace, setShipsToPlace] = useState(initialShips);
-  // Array of placed ships with their placement info:
-  // Each ship: { id, name, length, orientation, row, col }
   const [placedShips, setPlacedShips] = useState([]);
-  // Current placement orientation: "horizontal" or "vertical"
   const [orientation, setOrientation] = useState("horizontal");
-
   // State for hover preview:
-  // hoveredCells: an array of cell ids (格式 "row-col") that the ship would occupy
-  // hoverValid: boolean indicating if the placement is valid
   const [hoveredCells, setHoveredCells] = useState([]);
   const [hoverValid, setHoverValid] = useState(false);
 
-  // Helper function to check if the new ship placement is valid (in bounds and no overlap)
   const isValidPlacement = (row, col, shipLength, orient) => {
     const newShipCells = [];
     if (orient === "horizontal") {
@@ -41,7 +37,6 @@ export default function ShipSetup() {
         newShipCells.push(`${r}-${col}`);
       }
     }
-    // Check against all cells occupied by already placed ships
     for (let ship of placedShips) {
       const shipCells = [];
       if (ship.orientation === "horizontal") {
@@ -295,7 +290,7 @@ export default function ShipSetup() {
               boxSizing: "border-box",
               position: "relative",
             }}
-            // Use both onDragEnter and onDragOver to ensure preview is更新
+            // Use both onDragEnter and onDragOver to ensure preview updated
             onDragEnter={(e) => {
               e.preventDefault();
               handleCellDragOver(e, r, c);

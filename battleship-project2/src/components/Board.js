@@ -1,4 +1,5 @@
 // src/components/Board.js
+
 import React from "react";
 import { useGameContext } from "../contexts/GameContext";
 import Cell from "./Cell";

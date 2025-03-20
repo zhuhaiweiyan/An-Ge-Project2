@@ -1,13 +1,20 @@
 // src/pages/HomePage.js
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../css/HomePage.css";
 import battleshipImage from "../assets/images/battleship.jpg";
+import "../css/HomePage.css";
 
 export default function HomePage() {
+  const [showModal, setShowModal] = useState(false);
+
+  // Toggle the game mode selection modal
+  const handleStartGame = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
   return (
     <div className="container">
-      <h1 className="title">Welcome to Battleship!</h1>
+      <h1 className="title">Welcome to An Ge's Battleship!</h1>
 
       <div className="content">
         <p>
@@ -26,10 +33,29 @@ export default function HomePage() {
       </div>
 
       <div className="button">
-        <Link to="/game/normal" className="start-btn">
+        <button className="start-btn" onClick={handleStartGame}>
           Start Game
-        </Link>
+        </button>
       </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h3>Select Game Mode</h3>
+            <div className="modal-buttons">
+              <Link to="/game/normal" className="mode-btn" onClick={closeModal}>
+                Normal Mode
+              </Link>
+              <Link to="/game/easy" className="mode-btn" onClick={closeModal}>
+                Free Play
+              </Link>
+            </div>
+            <button className="close-btn" onClick={closeModal}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,3 +1,5 @@
+// src/components/Cell.js
+
 import React, { useState } from "react";
 import { useGameContext } from "../contexts/GameContext";
 
@@ -22,19 +24,13 @@ export default function Cell({ row, col, isPlayerBoard, hideShips, mode }) {
     cursor:
       !isPlayerBoard && turn === "player" && !gameOver ? "pointer" : "default",
     transition: "background-color 0.2s ease",
+    backgroundColor:
+      cellData.isHit ? "red" :
+      cellData.isMiss ? "green" :
+      cellData.hasShip && isPlayerBoard ? "black" :
+      cellData.hasShip && !isPlayerBoard && !hideShips ? "gray" :
+      !isPlayerBoard && hovered ? "lightblue" : "inherit",
   };
-
-  if (cellData.isHit) {
-    cellStyle.backgroundColor = "red";
-  } else if (cellData.isMiss) {
-    cellStyle.backgroundColor = "green";
-  } else if (cellData.hasShip && isPlayerBoard) {
-    cellStyle.backgroundColor = "black";
-  } else if (cellData.hasShip && !isPlayerBoard && !hideShips) {
-    cellStyle.backgroundColor = "gray";
-  } else if (!isPlayerBoard && hovered) {
-    cellStyle.backgroundColor = "lightblue";
-  }
 
   return (
     <div
