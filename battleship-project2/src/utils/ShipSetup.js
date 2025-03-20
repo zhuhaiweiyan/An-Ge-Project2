@@ -1,4 +1,4 @@
-// src/components/ShipSetup.js
+// src/utils/ShipSetup.js
 
 import React, { useState } from "react";
 import { useGameContext } from "../contexts/GameContext";
