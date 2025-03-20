@@ -1,4 +1,4 @@
-// src/utils/shipPlacement.js
+// src/utils/ShipPlacement.js
 export function generateBoard() {
     const size = 10;
     const board = [];

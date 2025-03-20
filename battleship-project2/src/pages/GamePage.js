@@ -1,11 +1,12 @@
+// src/pages/GamePage.js
 import React from "react";
 import { useGameContext } from "../contexts/GameContext";
 import Board from "../components/Board";
-import "../css/GamePage.css"; // 导入优化后的 CSS
+import ShipSetup from "../utils/ShipSetup";
+import "../css/GamePage.css";
 
 export default function GamePage({ mode }) {
-  const { turn, gameOver, winner, time, resetGame } = useGameContext();
-
+  const { turn, gameOver, winner, time, resetGame, setupComplete } = useGameContext();
   return (
     <div className="game-page-container">
       {gameOver && (
@@ -24,19 +25,27 @@ export default function GamePage({ mode }) {
         </div>
       </div>
 
-      <div className="boards-container">
-        {mode === "normal" && (
-          <div className="board-wrapper">
-            <h3 className="board-title">Your Board (Player)</h3>
-            <Board isPlayerBoard={true} hideShips={true} />
-          </div>
-        )}
-
-        <div className="board-wrapper">
-          <h3 className="board-title">Opponent Board (AI)</h3>
-          <Board isPlayerBoard={false} hideShips={false} mode={mode} />
+      {/* If manual ship placement is not yet complete and mode is "normal", show the ShipSetup screen */}
+      {!setupComplete && mode === "normal" ? (
+        <div>
+          <h3>Place your ships</h3>
+          <ShipSetup />
         </div>
-      </div>
+      ) : (
+        <div className="boards-container">
+          {mode === "normal" && (
+            <div className="board-wrapper">
+              <h3 className="board-title">Your Board (Player)</h3>
+              <Board isPlayerBoard={true} hideShips={true} />
+            </div>
+          )}
+
+          <div className="board-wrapper">
+            <h3 className="board-title">Opponent Board (AI)</h3>
+            <Board isPlayerBoard={false} hideShips={true} mode={mode} />
+          </div>
+        </div>
+      )}
 
       <p className="turn-indicator">Current Turn: {turn}</p>
     </div>

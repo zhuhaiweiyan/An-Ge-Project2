@@ -122,3 +122,116 @@
     gap: 20px;
   }
 }
+
+
+/* ship setup css */
+
+/* Container for the ship setup screen */
+.ship-setup-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Left side: Board area */
+.ship-setup-left {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Right side: Ships list + buttons */
+.ship-setup-right {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px; /* or auto */
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The container for the 4 action buttons */
+.setup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Common style for each button in the ship setup */
+.setup-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.setup-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Primary style can highlight the "Complete Setup" button */
+.setup-btn.primary {
+  background-color: #28a745;
+}
+
+.setup-btn.primary:hover {
+  background-color: #1e7e34;
+}
+
+/* Ships to Place list styling */
+.ship-setup-right h3 {
+  margin-bottom: 10px;
+}
+
+.ship-setup-right > div {
+  margin-bottom: 10px;
+}
+
+/* Draggable ship items styling */
+.ship-setup-right div[draggable] {
+  width: 100%;
+  text-align: center;
+  margin: 5px 0;
+  padding: 8px;
+  background-color: #ddd;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+/* Board cells can be adjusted if needed */
+.ship-setup-left .board {
+  /* If your board container has a class "board" */
+  /* e.g. grid layout for 10x10, etc. */
+}
+
+/* Responsive for mobile screens */
+@media (max-width: 768px) {
+  .ship-setup-container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .ship-setup-left, .ship-setup-right {
+    width: auto;
+  }
+
+  .setup-btn {
+    width: 100%;
+  }
+}
