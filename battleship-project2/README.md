@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Battleship Game (Project 2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project implements a web-based version of the classic **Battleship** board game using **JavaScript** and **React**. Players compete against an AI opponent in two distinct gameplay modes:
 
-In the project directory, you can run:
+- **Normal Mode**: Players and AI alternate turns.
+- **Free Play Mode**: Players freely target cells on the AI's board without AI retaliation.
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project follows a **React-driven architecture**, leveraging:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React Hooks** (`useState`, `useEffect`, `useCallback`)
+- **Context API** for global state management
+- **React Router** for routing between pages
+- **CSS Flexbox** for responsive styling
+- **Local Storage** for game state persistence (Bonus)
 
-### `npm test`
+### Key Components and Pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **`HomePage.js`**: Landing page with options for gameplay mode.
+- **`GamePage.js`**: Main gameplay interface.
+- **`RulesPage.js`**: Contains the rules and instructions.
+- **`HighScoresPage.js`**: Placeholder for high scores.
+- **`Board.js`**: Visualizes player and AI boards.
+- **`Cell.js`**: Interactive board cells with different states.
+- **`NavBar.js`**: Navigation component between different pages.
+- **`Footer.js`**: Consistent footer across the site.
+- **`ShipSetup.js` and `ShipPlacement.js`**: Handles ship placement logic and UI.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Core Features:
+- ✅ Two gameplay modes (**Normal** and **Free Play**)
+- ✅ 10x10 player and AI boards
+- ✅ Random and manual (**drag-and-drop**) ship placements
+- ✅ Interactive AI opponent (**random and focused targeting**)
+- ✅ **Win condition detection** and announcement
+- ✅ **Reset functionality** to restart gameplay
+- ✅ **Timer** showing elapsed game duration in `hh:mm:ss` format
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Bonus Implementations:
+#### **Local Storage**
+- 📌 Persist game state across browser refreshes.
+- 📌 Restore game state upon reopening the app.
 
-### `npm run eject`
+#### **Click and Drag Setup**
+- 📌 Players manually arrange ships via a **drag-and-drop** interface.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### **Focused Targeting**
+- 📌 AI intelligently selects **adjacent cells** after a successful hit.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Installation and Running
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To run the project locally, follow these steps:
 
-## Learn More
+```sh
+git clone https://github.com/zhuhaiweiyan/An-Ge-Project2.git
+cd battleship-project2
+npm install
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
+- The project is deployed on Render and available online:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 🔗 Deployment Link: https://an-ge-project2.onrender.com/
