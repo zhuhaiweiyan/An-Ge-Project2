@@ -1,0 +1,124 @@
+
+.game-page-container {
+  max-width: 1200px;
+  margin: 80px auto 30px auto;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+
+.game-over-banner {
+  background-color: #ffbf47;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.info-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.timer {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.reset-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: #0056b3;
+}
+
+.boards-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.board-wrapper {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+.board-title {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.turn-indicator {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .game-page-container {
+    margin: 120px auto 20px auto;
+    padding: 15px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .boards-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,102 @@
+/* 让 Navbar 固定在顶部 */
+.navbar-container {
+  position: fixed; /* 固定在顶部 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a1a2e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* 让页面内容不会被 Navbar 遮挡 */
+body {
+  padding-top: 80px;
+}
+
+/* 让品牌名颜色始终一致 */
+.brand-link {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: white; /* 保持一致 */
+}
+
+.brand-link:hover {
+  color: #00a8cc; /* 鼠标悬停时颜色 */
+}
+
+/* 导航菜单 */
+.navbar-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* 导航项样式 */
+.nav-item {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* 当前页面高亮 */
+.nav-item.active {
+  font-weight: bold;
+  border-bottom: 3px solid #00a8cc;
+}
+
+/* 悬停颜色 */
+.nav-item:hover {
+  color: #00a8cc;
+}
+
+/* Dropdown 样式 */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+  white-space: nowrap;
+  padding: 5px 0;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #1a1a2e;
+  font-size: 14px;
+}
+
+.dropdown-link:hover {
+  background-color: #00a8cc;
+  color: white;
+}
